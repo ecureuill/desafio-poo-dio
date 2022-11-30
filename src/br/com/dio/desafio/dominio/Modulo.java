@@ -9,8 +9,8 @@ public class Modulo{
 
     public Modulo(String titulo) {
         this.titulo = titulo;
-        this.cursos = new LinkedHashSet<Curso>();
-        this.mentorias = new LinkedHashSet<Mentoria>();
+        this.cursos = new LinkedHashSet<>();
+        this.mentorias = new LinkedHashSet<>();
         this.completo = false;
     }
     private Set<Curso> cursos;
@@ -32,7 +32,6 @@ public class Modulo{
 
     public void setCursos(Curso curso) {
         this.cursos.add(curso);
-//        setCargaHoraria(getCargaHoraria() + curso.getCargaHoraria());
     }
 
     public Set<Mentoria> getMentorias() {
@@ -41,7 +40,6 @@ public class Modulo{
 
     public void setMentorias(Mentoria mentoria) {
         this.mentorias.add(mentoria);
-//        setCargaHoraria(getCargaHoraria() + mentoria.getCargaHoraria());
 
     }
 
@@ -61,4 +59,16 @@ public class Modulo{
         return cursos.size() + mentorias.size();
     }
 
+        @Override
+    public String toString(){
+        return  "\t\tModulo " + getTitulo() + '\n' +
+                "\t\tCarga horaria total " + getTotalCargaHoraria() + '\n' +
+                "\t\tCompleto " + isCompleto() + '\n' +
+                "\t\t\t*********** Cursos *********** \n" +
+                cursos.toString()+
+                "\t\t\t****************************** \n" +
+                "\n\t\t\t******** Mentorias ********* \n" +
+                mentorias.toString()+
+                "\t\t\t**************************** \n\n\n";
+    }
 }

@@ -25,7 +25,7 @@ public class CursoTest {
         curso.setDescricao("descricao do curso");
         curso.setTitulo("titulo do curso");
 
-        assertCursoValues(curso, "titulo do curso","descricao do curso", Conteudo.Nivel.INTERMEDIARIO,5, 100, true);
+        assertCursoValues(curso, "titulo do curso","descricao do curso", Conteudo.Nivel.INTERMEDIARIO,2, 100, true);
 
     }
 

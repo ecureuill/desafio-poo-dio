@@ -11,12 +11,10 @@ public class Bootcamp{
     private String descricao;
     private Conteudo.Nivel nivel;
 
-    public Bootcamp(String titulo, String descricao, Conteudo.Nivel nivel, Set<Dev> devsInscritos, Set<Modulo> modulos) {
+    public Bootcamp(String titulo, String descricao, Conteudo.Nivel nivel) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.nivel = nivel;
-        this.devsInscritos = devsInscritos;
-        this.modulos = modulos;
     }
 
     public String getTitulo() {
@@ -82,5 +80,17 @@ public class Bootcamp{
 
     public void setModulos(Modulo modulo) {
         this.modulos.add(modulo);
+    }
+
+    @Override
+    public String toString(){
+        return "BootCamp" + getTitulo() + '\n' +
+                "\tdescricao: " + getDescricao() + '\n' +
+                "\tnivel: " + getNivel().toString() + '\n' +
+                "\tcompleto: " + isCompleto() + '\n' +
+                "\tcarga horaria: " + getCargaHoraria() + '\n' +
+                "\t******** Modulos ********* \n" +
+                modulos.toString();
+
     }
 }

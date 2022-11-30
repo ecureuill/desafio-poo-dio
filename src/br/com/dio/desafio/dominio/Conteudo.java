@@ -52,7 +52,17 @@ public abstract class Conteudo {
     }
 
     public void setPercentual(Integer percentual) {
+        if(percentual>100)
+            this.percentual = 100;
+        if(percentual<0)
+            this.percentual = 0;
+
         this.percentual = percentual;
+
+        if(percentual == 100)
+            this.completo = true;
+
+
     }
 
     public Nivel getNivel() {
@@ -67,6 +77,9 @@ public abstract class Conteudo {
         return completo;
     }
     public void setCompleto(Boolean completo) {
+        if(completo)
+            this.percentual = 100;
+
         this.completo = completo;
     }
 
@@ -86,5 +99,15 @@ public abstract class Conteudo {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    @Override
+    public String toString() {
+        return  "\t\t\ttitulo='" + getTitulo() + '\n' +
+                "\t\t\tdescricao='" + getDescricao() + '\n' +
+                "\t\t\tcargaHoraria=" + getCargaHoraria() +'\n' +
+                "\t\t\tnível=" + getNivel() +'\n' +
+                "\t\t\tcompleto=" + isCompleto() +'\n' +
+                "\t\t\tpercentual=" + getPercentual()+"\n\n";
     }
 }

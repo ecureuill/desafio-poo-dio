@@ -8,8 +8,8 @@ public class Dev {
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
     public void inscreverBootcamp(Bootcamp bootcamp){
-//        this.conteudosInscritos.addAll(bootcamp.getModulos());
-//        bootcamp.getDevsInscritos().add(this);
+        this.conteudosInscritos.addAll(bootcamp.getModulos());
+        bootcamp.getDevsInscritos().add(this);
     }
 
     public void progredir() {
