@@ -47,7 +47,7 @@ public class ModuloTest {
         Assertions.assertTrue(modulo.getCursos().size() == 1);
 
         Curso addedCurso =  modulo.getCursos().iterator().next();
-        assertCursoValues(addedCurso, "titulo do curso","descricao do curso", Conteudo.Nivel.INICIANTE,2, 0, false);
+        assertCursoValues(addedCurso, "titulo do curso","descricao do curso", Conteudo.Nivel.INICIANTE,2);
         assertModuloValues(modulo, "titulo", false, 1, 2);
 
         Curso curso2 = new Curso("titulo do curso 2","descricao do curso 2", Conteudo.Nivel.INICIANTE,3);
@@ -69,11 +69,11 @@ public class ModuloTest {
         Assertions.assertTrue(modulo.getMentorias().size() == 1);
 
         Curso addedCurso =  modulo.getCursos().iterator().next();
-        assertCursoValues(addedCurso, "titulo do curso","descricao do curso", Conteudo.Nivel.INICIANTE,2, 0, false);
+        assertCursoValues(addedCurso, "titulo do curso","descricao do curso", Conteudo.Nivel.INICIANTE,2);
 
 
         Mentoria addedMentoria =  modulo.getMentorias().iterator().next();
-        assertMentoriaValues(addedMentoria, "titulo do mentoria","descricao do mentoria", Conteudo.Nivel.INICIANTE,2, 0, false, LocalDate.of(2022,11,30));
+        assertMentoriaValues(addedMentoria, "titulo do mentoria","descricao do mentoria", Conteudo.Nivel.INICIANTE,2, LocalDate.of(2022,11,30));
 
         assertModuloValues(modulo, "titulo do Modulo", false, 2, 4);
     }

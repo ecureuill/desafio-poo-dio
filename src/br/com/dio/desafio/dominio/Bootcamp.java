@@ -54,10 +54,6 @@ public class Bootcamp{
         return  totalCargaHoraria;
     }
 
-    public Boolean isCompleto(){
-        Stream<Modulo> modulos =  this.modulos.stream().filter(modulo -> modulo.isCompleto() == false);
-        return modulos.count() == 0;
-    }
     public LocalDate getDataInicial() {
         return dataInicial;
     }
@@ -87,8 +83,9 @@ public class Bootcamp{
         return "BootCamp" + getTitulo() + '\n' +
                 "\tdescricao: " + getDescricao() + '\n' +
                 "\tnivel: " + getNivel().toString() + '\n' +
-                "\tcompleto: " + isCompleto() + '\n' +
                 "\tcarga horaria: " + getCargaHoraria() + '\n' +
+                "\tData: " + getDataInicial() + "-"+ getDataFinal() + "\n" +
+                "\tinscritos: " + "" + '\n' +
                 "\t******** Modulos ********* \n" +
                 modulos.toString();
 

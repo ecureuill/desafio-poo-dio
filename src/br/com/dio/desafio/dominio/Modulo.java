@@ -62,6 +62,7 @@ public class Modulo{
         @Override
     public String toString(){
         return  "\t\tModulo " + getTitulo() + '\n' +
+                "\t\tAtividades total " + getTotalAtividades() + '\n' +
                 "\t\tCarga horaria total " + getTotalCargaHoraria() + '\n' +
                 "\t\tCompleto " + isCompleto() + '\n' +
                 "\t\t\t*********** Cursos *********** \n" +

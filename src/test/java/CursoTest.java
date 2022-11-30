@@ -12,20 +12,18 @@ public class CursoTest {
     @Test
     public void createCurso(){
         Curso curso = new Curso("titulo","descricao", Conteudo.Nivel.INICIANTE,2);
-        assertCursoValues(curso, "titulo","descricao", Conteudo.Nivel.INICIANTE,2, 0, false);
+        assertCursoValues(curso, "titulo","descricao", Conteudo.Nivel.INICIANTE,2);
     }
 
     @Test
     public void editCurso(){
         Curso curso = new Curso("titulo","descricao", Conteudo.Nivel.INICIANTE,2);
 
-        curso.setCompleto(true);
-        curso.setPercentual(100);
         curso.setNivel(Conteudo.Nivel.INTERMEDIARIO);
         curso.setDescricao("descricao do curso");
         curso.setTitulo("titulo do curso");
 
-        assertCursoValues(curso, "titulo do curso","descricao do curso", Conteudo.Nivel.INTERMEDIARIO,2, 100, true);
+        assertCursoValues(curso, "titulo do curso","descricao do curso", Conteudo.Nivel.INTERMEDIARIO,2);
 
     }
 
@@ -33,14 +31,10 @@ public class CursoTest {
                                              String titulo,
                                              String descricao,
                                              Conteudo.Nivel nivel,
-                                             Integer cargaHoraria,
-                                             Integer percentual,
-                                             Boolean isCompleto) {
+                                             Integer cargaHoraria ) {
         Assertions.assertEquals(titulo, curso.getTitulo());
         Assertions.assertEquals(descricao, curso.getDescricao());
         Assertions.assertEquals(nivel, curso.getNivel());
         Assertions.assertEquals(cargaHoraria, curso.getCargaHoraria());
-        Assertions.assertEquals(percentual, curso.getPercentual());
-        Assertions.assertEquals(isCompleto, curso.isCompleto());
     }
 }

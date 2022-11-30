@@ -19,7 +19,7 @@ public class BootcampTest {
         Set<Modulo> modulos = new LinkedHashSet<Modulo>();
 
         Bootcamp bootcamp = new Bootcamp("titulo","descricao", Conteudo.Nivel.INICIANTE);
-        assertBootcampValues(bootcamp, "titulo","descricao", Conteudo.Nivel.INICIANTE,0, 100, true,devsInscritos, modulos);
+        assertBootcampValues(bootcamp, "titulo","descricao", Conteudo.Nivel.INICIANTE,0, modulos);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class BootcampTest {
         modulo2.setCursos(curso2);
         modulo2.setCursos(curso3);
         bootcamp.setModulos(modulo2);
-        assertBootcampValues(bootcamp, "titulo","descricao", Conteudo.Nivel.INICIANTE,8, 0, false,devsInscritos, modulos);
+        assertBootcampValues(bootcamp, "titulo","descricao", Conteudo.Nivel.INICIANTE,8, modulos);
     }
 
     public static void assertBootcampValues(Bootcamp bootcamp,
@@ -54,14 +54,10 @@ public class BootcampTest {
                                             String descricao,
                                             Conteudo.Nivel nivel,
                                             Integer cargaHoraria,
-                                            Integer percentual,
-                                            Boolean isCompleto,
-                                            Set<Dev> devsInscritos,
                                             Set<Modulo> modulos) {
         Assertions.assertEquals(titulo, bootcamp.getTitulo());
         Assertions.assertEquals(descricao, bootcamp.getDescricao());
         Assertions.assertEquals(nivel, bootcamp.getNivel());
         Assertions.assertEquals(cargaHoraria, bootcamp.getCargaHoraria());
-        Assertions.assertEquals(isCompleto, bootcamp.isCompleto());
     }
 }
