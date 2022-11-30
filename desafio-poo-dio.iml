@@ -7,5 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="junit.jupiter.engine" level="project" />
+    <orderEntry type="library" name="junit.platform.runner" level="project" />
+    <orderEntry type="library" name="github.javafaker" level="project" />
+    <orderEntry type="library" name="io.qameta.allure.junit5" level="project" />
   </component>
 </module>

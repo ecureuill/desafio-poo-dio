@@ -3,24 +3,28 @@ package br.com.dio.desafio.dominio;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Stream;
 
-public class Bootcamp {
-    private String nome;
+public class Bootcamp{
+    private String titulo;
     private String descricao;
-    private final LocalDate dataInicial = LocalDate.now();
-    private final LocalDate dataFinal = dataInicial.plusDays(45);
-    private Set<Dev> devsInscritos = new HashSet<>();
-    private Set<Conteudo> conteudos = new LinkedHashSet<>();
+    private Conteudo.Nivel nivel;
 
-
-    public String getNome() {
-        return nome;
+    public Bootcamp(String titulo, String descricao, Conteudo.Nivel nivel, Set<Dev> devsInscritos, Set<Modulo> modulos) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.nivel = nivel;
+        this.devsInscritos = devsInscritos;
+        this.modulos = modulos;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescricao() {
@@ -31,6 +35,31 @@ public class Bootcamp {
         this.descricao = descricao;
     }
 
+    public Conteudo.Nivel getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Conteudo.Nivel nivel) {
+        this.nivel = nivel;
+    }
+
+    private final LocalDate dataInicial = LocalDate.now();
+    private final LocalDate dataFinal = dataInicial.plusDays(45);
+    private Set<Dev> devsInscritos = new HashSet<Dev>();
+    private Set<Modulo> modulos = new LinkedHashSet<Modulo>();
+
+    public Integer getCargaHoraria(){
+        Integer totalCargaHoraria = 0;
+        for (Modulo modulo : this.modulos)
+            totalCargaHoraria = totalCargaHoraria + modulo.getTotalCargaHoraria();
+
+        return  totalCargaHoraria;
+    }
+
+    public Boolean isCompleto(){
+        Stream<Modulo> modulos =  this.modulos.stream().filter(modulo -> modulo.isCompleto() == false);
+        return modulos.count() == 0;
+    }
     public LocalDate getDataInicial() {
         return dataInicial;
     }
@@ -47,24 +76,11 @@ public class Bootcamp {
         this.devsInscritos = devsInscritos;
     }
 
-    public Set<Conteudo> getConteudos() {
-        return conteudos;
+    public Set<Modulo> getModulos() {
+        return modulos;
     }
 
-    public void setConteudos(Set<Conteudo> conteudos) {
-        this.conteudos = conteudos;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Bootcamp bootcamp = (Bootcamp) o;
-        return Objects.equals(nome, bootcamp.nome) && Objects.equals(descricao, bootcamp.descricao) && Objects.equals(dataInicial, bootcamp.dataInicial) && Objects.equals(dataFinal, bootcamp.dataFinal) && Objects.equals(devsInscritos, bootcamp.devsInscritos) && Objects.equals(conteudos, bootcamp.conteudos);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nome, descricao, dataInicial, dataFinal, devsInscritos, conteudos);
+    public void setModulos(Modulo modulo) {
+        this.modulos.add(modulo);
     }
 }
